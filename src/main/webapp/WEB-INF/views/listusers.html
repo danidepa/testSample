@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="ListAng">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="./libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./libs/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="./libs/angular-spring-data-rest/dist/angular-spring-data-rest.min.js"></script>
+    <script type="text/javascript" src="./libs/lodash/dist/lodash.min.js"></script>
+    <script src="./app/list.js"></script>
+</head>
+<body ng-controller="ListCtrl">
+Search <input ng-model="query" type="text"/>
+<table>
+    <thead>
+    <tr>
+        <th><a href="" ng-click="sortField = 'firstName'; reverse=!reverse"> First Name</a> </th>
+        <th><a href="" ng-click="sortField = 'lastName'; reverse=!reverse"> Last Name</a> </th>
+        <th><a href="" ng-click="sortField = 'email'; reverse=!reverse"> Email</a> </th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in users | filter: query | orderBy: sortField:reverse" >
+        <td><input type="text" ng-model="user.firstName"/></td>
+        <td><input type="text" ng-model="user.lastName"/></td>
+        <td>{{user.email}}</td>
+        <td><a href="" ng-click="remove(user.id)">Delete</a></td>
+        <td><a href="" ng-click="update(user)">Update</a></td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+
+    <form ng-submit="create(newUser)">
+        <table>
+            <tr>
+                <td>FirstName</td>
+                <td><input type="text" required placeholder="First Name" ng-model="newUser.firstName"/></td>
+            </tr>
+            <tr>
+                <td>LastName</td>
+                <td><input type="text" required placeholder="Last Name" ng-model="newUser.lastName"/></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" required placeholder="Email" ng-model="newUser.email"/></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="date" required placeholder="Email" ng-model="newUser.dateOfBirth"/></td>
+            </tr>
+            <tr>
+                <td>Sex</td>
+                <td>
+                    <label>
+                        <input name="sex" type="radio" ng-model="newUser.sex" value="1">
+                        Male
+                    </label>
+                    <label>
+                        <input name="sex" type="radio" ng-model="newUser.sex" value="0">
+                        Female
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input  type="password" required placeholder="Password" ng-model="newUser.password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td>
+                    <input  type="password" required placeholder="Password" ng-model="newUser.confirmPassword" compare-to="newUser.password" />
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Create</button>
+    </form>
+
+<hr>
+
+</body>
+</html>

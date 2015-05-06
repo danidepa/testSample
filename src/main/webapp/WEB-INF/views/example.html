@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="nameApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js">
+
+    </script>
+    <script>
+        var nameApp = angular.module('nameApp',[]);
+        nameApp.controller('NameCtrl',function($scope){
+
+         $scope.countries=[
+            {"name": "China", "population":13453463546},
+            {"name": "India", "population":133323223122323},
+            {"name": "Vzla", "population":270000000},
+            {"name": "EEUU", "population":500000000}
+            ];
+
+            $scope.sortfield='population';
+            $scope.reverse=true;
+        });
+
+
+    </script>
+</head>
+<body ng-controller="NameCtrl">
+
+    Search <input ng-model="query" type="text"/>
+     <table>
+         <tr>
+             <th><a href="" ng-click="sortField = 'name'; reverse=!reverse"> Country</a></th>
+             <th><a href="" ng-click="sortField = 'population'; reverse=!reverse">Population</a></th>
+         </tr>
+         <tr ng-repeat="country in countries | filter : query | orderBy: sortField:reverse">
+            <td>{{country.name}} </td>
+             <td>{{country.population}}</td>
+         </tr>
+     </table>
+
+</body>
+</html>

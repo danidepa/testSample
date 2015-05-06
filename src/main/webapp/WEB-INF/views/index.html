@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <link rel="stylesheet" href="./libs/bootstrap-css-only/css/bootstrap.min.css" />
+</head>
+<body ng-controller="AppController">
+<div class="container" >
+  <div class="page-header">
+    <h1>List</h1>
+  </div>
+  <!--div class="alert alert-info" role="alert" ng-hide="items && items.length > 0">
+    There are no items yet.
+  </div-->
+  <form role="form" ng-submit="addUser(newUser)">
+    <div  >
+      <div >
+          <table>
+            <thead>
+              <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Date</th>
+                <th>Sex</th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="user in users">
+                  <td>{{user.firstName}}</td>
+                  <td>{{user.lastName}}</td>
+                  <td>{{user.dateOfBirth}}</td>
+                  <td>{{user.sex}}</td>
+                 <td><a href="" ng-click="deleteUser(user)">Delete</a></td>
+              </tr>
+              <tr>
+                <td>
+                <input required placeholder="First Name" ng-model="newUser.firstName" />
+                </td>
+                <td>
+                  <input required placeholder="Last Name" ng-model="newUser.lastName" />
+                </td>
+                <td>
+                  <input required placeholder="Date of Birth" ng-model="newUser.dateOfBirth" />
+                </td>
+                <td>
+                  <input required placeholder="Sex" size="1" ng-model="newUser.sex" />
+                </td>
+                <td>
+                  <input required placeholder="Email"  ng-model="newUser.email" />
+                </td>
+                <td>
+                  <input required placeholder="Password"  ng-model="newUser.password" />
+                </td>
+                <td>
+                  <input required placeholder="Role"  ng-model="newUser.role" />
+                </td>
+                <td>
+                  <button type="submit">Create</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+
+    </div>
+    <hr />
+
+  </form>
+</div>
+
+<script type="text/javascript" src="./libs/angular/angular.min.js"></script>
+<script type="text/javascript" src="./libs/angular-resource/angular-resource.min.js"></script>
+<script type="text/javascript" src="./libs/angular-spring-data-rest/dist/angular-spring-data-rest.min.js"></script>
+<script type="text/javascript" src="./libs/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="./app/app.js"></script>
+<script type="text/javascript" src="./app/controller.js"></script>
+<script type="text/javascript" src="./app/services.js"></script>
+</body>
+</html>
